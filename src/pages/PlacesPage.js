@@ -7,7 +7,7 @@ class Places extends Component {
     render(){
       return (
           <PlacesWrapper>
-              <Header/>
+              <Header page={this.props.data.page}/>
               <PlacesContent>
                 places page
               </PlacesContent>

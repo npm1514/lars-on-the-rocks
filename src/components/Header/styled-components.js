@@ -41,6 +41,13 @@ export const MenuLink = styled.div`
   }
   a:hover {
     cursor: pointer;
+    color: #454545;
+  }
+  &.selectedDesktopLink a {
+    color: #8d8d8d;
+  }
+  &.selectedDesktopLink a:hover {
+    color: #fff;
   }
 `;
 
@@ -52,8 +59,10 @@ export const MobileMenu = styled.div`
   position: relative;
   svg {
     position: absolute;
-    right: 16px;
-    top: 16px;
+    height: 36px;
+    width: 36px;
+    top: 12px;
+    right: 12px;
   }
   @media (min-width: 770px){
     display: none;
@@ -80,5 +89,11 @@ export const MenuLine = styled.div`
   &:hover {
     cursor: pointer;
     background-color: #454545;
+  }
+  &.selectedMobileLine {
+    background-color: #454545;
+  }
+  &.selectedMobileLine:hover {
+    background-color: #3f3f3f;
   }
 `;

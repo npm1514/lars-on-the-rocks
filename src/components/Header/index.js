@@ -18,13 +18,13 @@ class HeaderComponent extends Component {
     return (
       <Header>
         <DesktopMenu>
-          <HeaderDesktopMenu/>
+          <HeaderDesktopMenu page={this.props.page}/>
         </DesktopMenu>
         <MobileMenu>
-          <MenuIcon fontSize="large" onClick={this.changeMenu}/>
+          <MenuIcon onClick={this.changeMenu}/>
           {
             this.state.menuOpen &&
-            <HeaderMobileMenu/>
+            <HeaderMobileMenu page={this.props.page}/>
           }
         </MobileMenu>
       </Header>

@@ -9,9 +9,11 @@ class HeaderMobileMenu extends Component {
         {
           menuList.map((a, i) => {
             return (
-              <MenuLine key={i}>
-                <a href={a.link}>{a.label}</a>
-              </MenuLine>
+              <a href={a.link} key={i}>
+                <MenuLine className={this.props.page == a.link ? "selectedMobileLine": "genericMobileLine"}>
+                  {a.label}
+                </MenuLine>
+              </a>
             )
           })
         }

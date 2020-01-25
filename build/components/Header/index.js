@@ -68,10 +68,13 @@ function (_Component) {
   _createClass(HeaderComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_styledComponents.Header, null, _react["default"].createElement(_styledComponents.DesktopMenu, null, _react["default"].createElement(_HeaderDesktopMenu["default"], null)), _react["default"].createElement(_styledComponents.MobileMenu, null, _react["default"].createElement(_Menu["default"], {
-        fontSize: "large",
+      return _react["default"].createElement(_styledComponents.Header, null, _react["default"].createElement(_styledComponents.DesktopMenu, null, _react["default"].createElement(_HeaderDesktopMenu["default"], {
+        page: this.props.page
+      })), _react["default"].createElement(_styledComponents.MobileMenu, null, _react["default"].createElement(_Menu["default"], {
         onClick: this.changeMenu
-      }), this.state.menuOpen && _react["default"].createElement(_HeaderMobileMenu["default"], null)));
+      }), this.state.menuOpen && _react["default"].createElement(_HeaderMobileMenu["default"], {
+        page: this.props.page
+      })));
     }
   }]);
 

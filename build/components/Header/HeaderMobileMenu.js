@@ -49,11 +49,14 @@ function (_Component) {
   _createClass(HeaderMobileMenu, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return _react["default"].createElement(_styledComponents.MobileMenuWrapper, null, _MenuList["default"].map(function (a, i) {
-        return _react["default"].createElement(_styledComponents.MenuLine, {
+        return _react["default"].createElement("a", {
+          href: a.link,
           key: i
-        }, _react["default"].createElement("a", {
-          href: a.link
+        }, _react["default"].createElement(_styledComponents.MenuLine, {
+          className: _this.props.page == a.link ? "selectedMobileLine" : "genericMobileLine"
         }, a.label));
       }));
     }

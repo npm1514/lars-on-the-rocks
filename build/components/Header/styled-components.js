@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: #fff;\n  background-color: #3f3f3f;\n  padding: 16px;\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n  &:hover {\n    cursor: pointer;\n    background-color: #454545;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: #fff;\n  background-color: #3f3f3f;\n  padding: 16px;\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n  &:hover {\n    cursor: pointer;\n    background-color: #454545;\n  }\n  &.selectedMobileLine {\n    background-color: #454545;\n  }\n  &.selectedMobileLine:hover {\n    background-color: #3f3f3f;\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -30,7 +30,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 100%;\n  position: relative;\n  svg {\n    position: absolute;\n    right: 16px;\n    top: 16px;\n  }\n  @media (min-width: 770px){\n    display: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 100%;\n  position: relative;\n  svg {\n    position: absolute;\n    height: 36px;\n    width: 36px;\n    top: 12px;\n    right: 12px;\n  }\n  @media (min-width: 770px){\n    display: none;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -40,7 +40,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  width: max-width;\n  padding: 12px;\n  color: #fff;\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n  a:hover {\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: max-width;\n  padding: 12px;\n  color: #fff;\n  a {\n    color: #fff;\n    text-decoration: none;\n  }\n  a:hover {\n    cursor: pointer;\n    color: #454545;\n  }\n  &.selectedDesktopLink a {\n    color: #8d8d8d;\n  }\n  &.selectedDesktopLink a:hover {\n    color: #fff;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;

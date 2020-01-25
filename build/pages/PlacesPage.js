@@ -51,7 +51,9 @@ function (_Component) {
   _createClass(Places, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_places.PlacesWrapper, null, _react["default"].createElement(_Header["default"], null), _react["default"].createElement(_places.PlacesContent, null, "places page"), _react["default"].createElement(_Footer["default"], null));
+      return _react["default"].createElement(_places.PlacesWrapper, null, _react["default"].createElement(_Header["default"], {
+        page: this.props.data.page
+      }), _react["default"].createElement(_places.PlacesContent, null, "places page"), _react["default"].createElement(_Footer["default"], null));
     }
   }]);
 

@@ -7,7 +7,7 @@ class Author extends Component {
     render(){
       return (
           <AuthorWrapper>
-              <Header/>
+              <Header page={this.props.data.page}/>
               <AuthorContent>
                 author page
               </AuthorContent>

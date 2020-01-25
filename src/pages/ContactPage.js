@@ -7,7 +7,7 @@ class Contact extends Component {
     render(){
       return (
           <ContactWrapper>
-              <Header/>
+              <Header page={this.props.data.page}/>
               <ContactContent>
                 contact page
               </ContactContent>

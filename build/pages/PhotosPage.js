@@ -51,7 +51,9 @@ function (_Component) {
   _createClass(Photos, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_photos.PhotosWrapper, null, _react["default"].createElement(_Header["default"], null), _react["default"].createElement(_photos.PhotosContent, null, "photos page"), _react["default"].createElement(_Footer["default"], null));
+      return _react["default"].createElement(_photos.PhotosWrapper, null, _react["default"].createElement(_Header["default"], {
+        page: this.props.data.page
+      }), _react["default"].createElement(_photos.PhotosContent, null, "photos page"), _react["default"].createElement(_Footer["default"], null));
     }
   }]);
 

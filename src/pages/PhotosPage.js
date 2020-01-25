@@ -7,7 +7,7 @@ class Photos extends Component {
     render(){
       return (
           <PhotosWrapper>
-              <Header/>
+              <Header page={this.props.data.page}/>
               <PhotosContent>
                 photos page
               </PhotosContent>

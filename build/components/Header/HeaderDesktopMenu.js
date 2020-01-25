@@ -49,8 +49,11 @@ function (_Component) {
   _createClass(HeaderDesktopMenu, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return _react["default"].createElement(_styledComponents.DesktopMenuWrapper, null, _MenuList["default"].map(function (a, i) {
         return _react["default"].createElement(_styledComponents.MenuLink, {
+          className: _this.props.page == a.link ? "selectedDesktopLink" : "genericDesktopLink",
           key: i
         }, _react["default"].createElement("a", {
           href: a.link

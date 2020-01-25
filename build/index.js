@@ -22,6 +22,8 @@ var _styledComponents = require("styled-components");
 
 var _fs = _interopRequireDefault(require("fs"));
 
+var _path = _interopRequireDefault(require("path"));
+
 var _compression = _interopRequireDefault(require("compression"));
 
 var _cors = _interopRequireDefault(require("cors"));
@@ -31,8 +33,8 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 3003;
-var app = (0, _express["default"])();
-app.use((0, _compression["default"])());
+var app = (0, _express["default"])(); // app.use(compression());
+
 app.use((0, _cors["default"])());
 app.use(_bodyParser["default"].json());
 app.use(_bodyParser["default"].urlencoded());
@@ -41,80 +43,127 @@ var dataObj = {},
     placesBundle = "",
     contactBundle = "",
     authorBundle = "",
-    photosBundle = "";
+    photosBundle = "",
+    trackedData = {
+  pv: {
+    total_count: 0,
+    tracks: [{
+      id: '/',
+      count: 0
+    }]
+  },
+  click: {
+    total_count: 0,
+    tracks: [{
+      id: 'body',
+      count: 0
+    }]
+  }
+};
 
 _fs["default"].readFile('./dist/js/home.bundle.min.js', "utf8", function (err, data) {
   if (err) console.log("ERR", err);
   homeBundle = data || "";
-}); // fs.readFile('./dist/js/places.bundle.min.js', "utf8", (err, data) => {
-//   if (err) console.log("ERR" ,err);
-//   placesBundle = data || "";
-// })
-// fs.readFile('./dist/js/contact.bundle.min.js', "utf8", (err, data) => {
-//   if (err) console.log("ERR" ,err);
-//   contactBundle = data || "";
-// })
-// fs.readFile('./dist/js/author.bundle.min.js', "utf8", (err, data) => {
-//   if (err) console.log("ERR" ,err);
-//   authorBundle = data || "";
-// })
-// fs.readFile('./dist/js/photos.bundle.min.js', "utf8", (err, data) => {
-//   if (err) console.log("ERR" ,err);
-//   photosBundle = data || "";
-// })
+});
 
+_fs["default"].readFile('./dist/js/places.bundle.min.js', "utf8", function (err, data) {
+  if (err) console.log("ERR", err);
+  placesBundle = data || "";
+});
+
+_fs["default"].readFile('./dist/js/contact.bundle.min.js', "utf8", function (err, data) {
+  if (err) console.log("ERR", err);
+  contactBundle = data || "";
+});
+
+_fs["default"].readFile('./dist/js/author.bundle.min.js', "utf8", function (err, data) {
+  if (err) console.log("ERR", err);
+  authorBundle = data || "";
+});
+
+_fs["default"].readFile('./dist/js/photos.bundle.min.js', "utf8", function (err, data) {
+  if (err) console.log("ERR", err);
+  photosBundle = data || "";
+});
 
 app.get('/', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, homeBundle, _HomeRoot["default"], "home"));
+  res.send(returnHTML(data, homeBundle, _HomeRoot["default"]));
 });
 app.get('/home', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, homeBundle, _HomeRoot["default"], "home"));
+  res.send(returnHTML(data, homeBundle, _HomeRoot["default"]));
 });
 app.get('/places', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/places"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, placesBundle, _PlacesRoot["default"], "places"));
+  res.send(returnHTML(data, placesBundle, _PlacesRoot["default"]));
 });
 app.get('/contact', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/contact"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, contactBundle, _ContactRoot["default"], "contact"));
+  res.send(returnHTML(data, contactBundle, _ContactRoot["default"]));
 });
 app.get('/author', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/author"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, authorBundle, _AuthorRoot["default"], "author"));
+  res.send(returnHTML(data, authorBundle, _AuthorRoot["default"]));
 });
 app.get('/photos', function (req, res) {
-  var data = "";
+  var data = {
+    page: "/photos"
+  };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, photosBundle, _PhotosRoot["default"], "photos"));
+  res.send(returnHTML(data, photosBundle, _PhotosRoot["default"]));
 });
 ;
 app.get('/health', function (req, res) {
   return res.send('OK');
 });
+app.get('/images/:id', function (req, res) {
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
+}); //maybe make analytics page, add date/hour buckets, good start though
+
+app.get('/track/:id', function (req, res) {
+  var sObj = trackedData[req.params.id];
+  var _req$headers = req.headers,
+      referer = _req$headers.referer,
+      host = _req$headers.host,
+      query = req.query;
+  sObj.total_count++;
+  var val = query.content ? query.content : referer.split(host)[1];
+  var found = sObj.tracks.findIndex(function (track) {
+    return track.id == val;
+  });
+  if (found == -1) sObj.tracks.push({
+    id: val,
+    count: 1
+  });else sObj.tracks[found].count++;
+  res.send(trackedData);
+});
+app.get('/*', function (req, res) {
+  var data = {
+    page: "/"
+  };
+  res.set('Cache-Control', 'public, max-age=31557600');
+  res.send(returnHTML(data, homeBundle, _HomeRoot["default"]));
+});
 app.listen(PORT, function () {
   console.log('Running on http://localhost:' + PORT);
 }); // functions!!!!!!!!!!!!!
-
-function getQueries(req, res) {
-  var qOb = {};
-  var queries = req && req._parsedUrl && req._parsedUrl.query && req._parsedUrl.query.split('&') ? req._parsedUrl.query.split('&') : [];
-
-  if (queries.length) {
-    queries.forEach(function (x) {
-      var y = x.split('=');
-      qOb[y[0]] = y[1];
-    });
-  }
-
-  return qOb;
-}
 
 function fetcher(url) {
   return (0, _nodeFetch["default"])(url).then(function (response) {
@@ -125,14 +174,14 @@ function fetcher(url) {
   })["catch"](errHandle);
 }
 
-function returnHTML(data, bundle, Page, title) {
+function returnHTML(data, bundle, Page) {
   var dataString = JSON.stringify(data);
   var sheet = new _styledComponents.ServerStyleSheet();
   var body = (0, _server.renderToString)(sheet.collectStyles(_react["default"].createElement(Page, {
     data: data
   })));
   var styles = sheet.getStyleTags();
-  return "\n            <html lang=\"en\">\n              <head>\n                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n                <title>".concat(title, "</title>\n                <meta name=\"Description\" content=\"").concat(title, "\">\n                <link href=\"https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap\" rel=\"stylesheet\">\n                <style>\n                  body { margin: 0; font-family: 'Averia Serif Libre', cursive; }\n                  a { text-decoration: none; color: #000; }\n                </style>\n                ").concat(styles, "\n              </head>\n              <body>\n                <script>window.os = window.os || {};</script>\n                <script>window.__DATA__=").concat(dataString, "</script>\n                <div id=\"app\" role=\"main\">").concat(body, "</div>\n                <script>").concat(bundle, "</script>\n              </body>\n            </html>\n          ");
+  return "\n            <html lang=\"en\">\n              <head>\n                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n                <title>Lars on the Rocks \u2013 Adventuring at its Highest</title>\n                <meta name=\"Description\" content=\"Lars on the Rocks \u2013 Adventuring at its Highest\">\n                <link href=\"https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap\" rel=\"stylesheet\">\n                <link rel=\"icon\" href=\"/images/headertab_ico.jpg\" sizes=\"32x32\">\n                <style>\n                  body { margin: 0; font-family: 'Averia Serif Libre', cursive; }\n                  a { text-decoration: none; color: #000; }\n                </style>\n                ".concat(styles, "\n              </head>\n              <body>\n                <script>window.os = window.os || {};</script>\n                <script>window.__DATA__=").concat(dataString, "</script>\n                <div id=\"app\" role=\"main\">").concat(body, "</div>\n                <script>").concat(bundle, "</script>\n                <script>\n                  fetch('/track/pv')\n                  .then(res => res.json())\n                  .then(res => {\n                    window.tracked = res;\n                  });\n                  document.body.addEventListener('click', (e) => {\n                    fetch('/track/click?content=' + e.target.outerHTML)\n                    .then(res => res.json())\n                    .then(res => {\n                      window.tracked = res;\n                    });\n                  })\n                </script>\n              </body>\n            </html>\n          ");
 }
 
 function errHandle(err) {

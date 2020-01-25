@@ -9,7 +9,7 @@ class HeaderDesktopMenu extends Component {
         {
           menuList.map((a, i) => {
             return (
-              <MenuLink key={i}>
+              <MenuLink className={this.props.page == a.link ? "selectedDesktopLink": "genericDesktopLink"} key={i}>
                 <a href={a.link}>{a.label}</a>
               </MenuLink>
             )

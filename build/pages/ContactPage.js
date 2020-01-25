@@ -51,7 +51,9 @@ function (_Component) {
   _createClass(Contact, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_Header["default"], null), _react["default"].createElement(_contact.ContactContent, null, "contact page"), _react["default"].createElement(_Footer["default"], null));
+      return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_Header["default"], {
+        page: this.props.data.page
+      }), _react["default"].createElement(_contact.ContactContent, null, "contact page"), _react["default"].createElement(_Footer["default"], null));
     }
   }]);
 
