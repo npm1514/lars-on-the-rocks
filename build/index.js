@@ -33,8 +33,8 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 3003;
-var app = (0, _express["default"])(); // app.use(compression());
-
+var app = (0, _express["default"])();
+app.use((0, _compression["default"])());
 app.use((0, _cors["default"])());
 app.use(_bodyParser["default"].json());
 app.use(_bodyParser["default"].urlencoded());
@@ -135,6 +135,38 @@ app.get('/health', function (req, res) {
 app.get('/images/:id', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
+});
+app.post('/email', function (req, res) {
+  (0, _nodeFetch["default"])("https://mandrillapp.com/api/1.0/messages/send.json", {
+    "method": "POST",
+    "body": {
+      "data": {
+        // "key": "m9WhwvP-pCZrAOmfEmMceg",
+        "key": "8646446f341f23391ed2f33475394a56-us4",
+        "message": {
+          "from_email": "npm1514@gmail.com",
+          "to": [{
+            "email": "npm1514@gmail.com",
+            "name": "Lars On The Rocks",
+            "type": "to"
+          }],
+          "autotext": true,
+          "subject": "Customer Inquiry - " + "name" + " @ " + "email",
+          "text": "message"
+        }
+      }
+    }
+  }).then(function () {
+    console.log("success");
+    res.send({
+      message: "Your email has been received. I will get back to you within the next 48 hours."
+    });
+  }, function () {
+    console.log("fail");
+    res.send({
+      message: "Whoops! Something went wrong. Please contact me via email or give me a call."
+    });
+  });
 }); //maybe make analytics page, add date/hour buckets, good start though
 
 app.get('/track/:id', function (req, res) {

@@ -3,7 +3,7 @@ import { hydrate, render } from 'react-dom';
 import Home from '../pages/HomePage';
 
 if (window)
-  render(
+  hydrate(
     <Home data={window.__DATA__} />,
     document.getElementById('app')
   );

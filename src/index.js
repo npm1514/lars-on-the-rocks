@@ -20,7 +20,7 @@ import bodyParser from 'body-parser';
 var PORT = process.env.PORT || 3003;
 
 const app = express();
-// app.use(compression());
+app.use(compression());
 app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
@@ -119,6 +119,40 @@ app.get('/images/:id', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.sendFile(path.join(__dirname, '../images/' + req.params.id));
 });
+
+app.post('/email', (req, res) => {
+  fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
+    "method": "POST",
+    "body": {
+      "data": {
+        // "key": "m9WhwvP-pCZrAOmfEmMceg",
+        "key": "8646446f341f23391ed2f33475394a56-us4",
+        "message": {
+          "from_email": "npm1514@gmail.com",
+          "to": [{
+            "email": "npm1514@gmail.com",
+            "name": "Lars On The Rocks",
+            "type": "to"
+          }],
+          "autotext": true,
+          "subject": "Customer Inquiry - " + "name" + " @ " + "email",
+          "text": "message"
+        }
+      }
+    }
+  })
+  .then(() => {
+    console.log("success");
+    res.send({
+      message: "Your email has been received. I will get back to you within the next 48 hours."
+    })
+  }, () => {
+    console.log("fail");
+    res.send({
+      message: "Whoops! Something went wrong. Please contact me via email or give me a call."
+    })
+  })
+})
 
 //maybe make analytics page, add date/hour buckets, good start though
 app.get('/track/:id', (req, res) => {

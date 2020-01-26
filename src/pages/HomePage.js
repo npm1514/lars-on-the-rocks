@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Header, Footer, Banner } from '../components';
 import { HomeWrapper, HomeContent } from '../styled-components/home';
 
 class Home extends Component {
@@ -8,6 +7,7 @@ class Home extends Component {
       return (
           <HomeWrapper>
               <Header page={this.props.data.page}/>
+              <Banner/>
               <HomeContent>
                 home page
               </HomeContent>

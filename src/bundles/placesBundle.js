@@ -3,7 +3,7 @@ import { hydrate, render } from 'react-dom';
 import Places from '../pages/PlacesPage';
 
 if (window)
-  render(
+  hydrate(
     <Places data={window.__DATA__} />,
     document.getElementById('app')
   );

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Header, Footer, Banner } from '../components';
 import { PhotosWrapper, PhotosContent } from '../styled-components/photos';
 
 class Photos extends Component {
@@ -8,6 +7,7 @@ class Photos extends Component {
       return (
           <PhotosWrapper>
               <Header page={this.props.data.page}/>
+              <Banner/>
               <PhotosContent>
                 photos page
               </PhotosContent>

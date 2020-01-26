@@ -3,7 +3,7 @@ import { hydrate, render } from 'react-dom';
 import Author from '../pages/AuthorPage';
 
 if (window)
-  render(
+  hydrate(
     <Author data={window.__DATA__} />,
     document.getElementById('app')
   );

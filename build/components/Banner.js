@@ -7,9 +7,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _components = require("../components");
-
-var _places = require("../styled-components/places");
+var _banner = require("../styled-components/banner");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -33,28 +31,26 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Places =
+var BannerComponent =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Places, _Component);
+  _inherits(BannerComponent, _Component);
 
-  function Places() {
-    _classCallCheck(this, Places);
+  function BannerComponent() {
+    _classCallCheck(this, BannerComponent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Places).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(BannerComponent).apply(this, arguments));
   }
 
-  _createClass(Places, [{
+  _createClass(BannerComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_places.PlacesWrapper, null, _react["default"].createElement(_components.Header, {
-        page: this.props.data.page
-      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_places.PlacesContent, null, "places page"), _react["default"].createElement(_components.Footer, null));
+      return _react["default"].createElement(_banner.Banner, null, _react["default"].createElement(_banner.Mask, null, _react["default"].createElement(_banner.Title, null, "LARS ON THE ROCKS"), _react["default"].createElement(_banner.Subtitle, null, "Adventuring at its Highest")));
     }
   }]);
 
-  return Places;
+  return BannerComponent;
 }(_react.Component);
 
-var _default = Places;
+var _default = BannerComponent;
 exports["default"] = _default;

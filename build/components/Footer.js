@@ -45,7 +45,7 @@ function (_Component) {
   _createClass(FooterComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_footer.Footer, null, "footer");
+      return _react["default"].createElement(_footer.Footer, null, "\xA9 Copyright ", new Date().getFullYear(), " All rights reserved.", _react["default"].createElement("br", null), "larsontherocks.com");
     }
   }]);
 

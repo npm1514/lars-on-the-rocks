@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Header, Footer, Banner } from '../components';
 import { PlacesWrapper, PlacesContent } from '../styled-components/places';
 
 class Places extends Component {
@@ -8,6 +7,7 @@ class Places extends Component {
       return (
           <PlacesWrapper>
               <Header page={this.props.data.page}/>
+              <Banner/>
               <PlacesContent>
                 places page
               </PlacesContent>

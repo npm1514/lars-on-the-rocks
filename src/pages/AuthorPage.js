@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Header, Footer, Banner } from '../components';
 import { AuthorWrapper, AuthorContent } from '../styled-components/author';
 
 class Author extends Component {
@@ -8,6 +7,7 @@ class Author extends Component {
       return (
           <AuthorWrapper>
               <Header page={this.props.data.page}/>
+              <Banner/>
               <AuthorContent>
                 author page
               </AuthorContent>

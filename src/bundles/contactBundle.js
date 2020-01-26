@@ -3,7 +3,7 @@ import { hydrate, render } from 'react-dom';
 import Contact from '../pages/ContactPage';
 
 if (window)
-  render(
+  hydrate(
     <Contact data={window.__DATA__} />,
     document.getElementById('app')
   );

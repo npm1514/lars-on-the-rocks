@@ -7,7 +7,10 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
 `;
 
 //desktop
@@ -74,7 +77,7 @@ export const MobileMenuWrapper = styled.div`
   position: absolute;
   left: 0;
   top: 60px;
-
+  z-index: 10;
 `;
 
 export const MenuLine = styled.div`

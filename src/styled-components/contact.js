@@ -8,7 +8,6 @@ import styled from 'styled-components';
   export const ContactContent = styled.div`
     width: calc(100% - 32px);
     padding: 16px;
-    min-height: 300px;
+    min-height: calc(100vh - 300px - 60px);
     text-align: center;
   `;
-  

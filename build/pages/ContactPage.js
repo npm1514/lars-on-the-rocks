@@ -7,13 +7,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Header = _interopRequireDefault(require("../components/Header"));
-
-var _Footer = _interopRequireDefault(require("../components/Footer"));
+var _components = require("../components");
 
 var _contact = require("../styled-components/contact");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -51,9 +47,9 @@ function (_Component) {
   _createClass(Contact, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_Header["default"], {
+      return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_components.Header, {
         page: this.props.data.page
-      }), _react["default"].createElement(_contact.ContactContent, null, "contact page"), _react["default"].createElement(_Footer["default"], null));
+      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_contact.ContactContent, null, "contact page"), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Header, Footer, Banner } from '../components';
 import { ContactWrapper, ContactContent } from '../styled-components/contact';
 
 class Contact extends Component {
@@ -8,6 +7,7 @@ class Contact extends Component {
       return (
           <ContactWrapper>
               <Header page={this.props.data.page}/>
+              <Banner/>
               <ContactContent>
                 contact page
               </ContactContent>
