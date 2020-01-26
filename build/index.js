@@ -30,6 +30,8 @@ var _cors = _interopRequireDefault(require("cors"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
+var _config = _interopRequireDefault(require("./config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 3003;
@@ -141,8 +143,7 @@ app.post('/email', function (req, res) {
     "method": "POST",
     "body": {
       "data": {
-        // "key": "m9WhwvP-pCZrAOmfEmMceg",
-        "key": "8646446f341f23391ed2f33475394a56-us4",
+        "key": _config["default"].key2,
         "message": {
           "from_email": "npm1514@gmail.com",
           "to": [{
@@ -156,16 +157,13 @@ app.post('/email', function (req, res) {
         }
       }
     }
-  }).then(function () {
-    console.log("success");
+  }).then(function (resp) {
+    console.log("success", resp);
     res.send({
       message: "Your email has been received. I will get back to you within the next 48 hours."
     });
-  }, function () {
-    console.log("fail");
-    res.send({
-      message: "Whoops! Something went wrong. Please contact me via email or give me a call."
-    });
+  })["catch"](function (err) {
+    return console.log(err);
   });
 }); //maybe make analytics page, add date/hour buckets, good start though
 

@@ -16,6 +16,7 @@ import path from 'path'
 import compression from 'compression';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import config from './config';
 
 var PORT = process.env.PORT || 3003;
 
@@ -125,8 +126,7 @@ app.post('/email', (req, res) => {
     "method": "POST",
     "body": {
       "data": {
-        // "key": "m9WhwvP-pCZrAOmfEmMceg",
-        "key": "8646446f341f23391ed2f33475394a56-us4",
+        "key": config.key2,
         "message": {
           "from_email": "npm1514@gmail.com",
           "to": [{
@@ -141,17 +141,13 @@ app.post('/email', (req, res) => {
       }
     }
   })
-  .then(() => {
-    console.log("success");
+  .then((resp) => {
+    console.log("success", resp);
     res.send({
       message: "Your email has been received. I will get back to you within the next 48 hours."
     })
-  }, () => {
-    console.log("fail");
-    res.send({
-      message: "Whoops! Something went wrong. Please contact me via email or give me a call."
-    })
   })
+  .catch(err => console.log(err))
 })
 
 //maybe make analytics page, add date/hour buckets, good start though
