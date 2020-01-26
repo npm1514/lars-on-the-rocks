@@ -16,7 +16,6 @@ import path from 'path'
 import compression from 'compression';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import config from './config';
 
 var PORT = process.env.PORT || 3003;
 
@@ -121,34 +120,34 @@ app.get('/images/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '../images/' + req.params.id));
 });
 
-app.post('/email', (req, res) => {
-  fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
-    "method": "POST",
-    "body": {
-      "data": {
-        "key": config.key2,
-        "message": {
-          "from_email": "npm1514@gmail.com",
-          "to": [{
-            "email": "npm1514@gmail.com",
-            "name": "Lars On The Rocks",
-            "type": "to"
-          }],
-          "autotext": true,
-          "subject": "Customer Inquiry - " + "name" + " @ " + "email",
-          "text": "message"
-        }
-      }
-    }
-  })
-  .then((resp) => {
-    console.log("success", resp);
-    res.send({
-      message: "Your email has been received. I will get back to you within the next 48 hours."
-    })
-  })
-  .catch(err => console.log(err))
-})
+// app.post('/email', (req, res) => {
+//   fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
+//     "method": "POST",
+//     "body": {
+//       "data": {
+//         "key": config.key2,
+//         "message": {
+//           "from_email": "npm1514@gmail.com",
+//           "to": [{
+//             "email": "npm1514@gmail.com",
+//             "name": "Lars On The Rocks",
+//             "type": "to"
+//           }],
+//           "autotext": true,
+//           "subject": "Customer Inquiry - " + "name" + " @ " + "email",
+//           "text": "message"
+//         }
+//       }
+//     }
+//   })
+//   .then((resp) => {
+//     console.log("success", resp);
+//     res.send({
+//       message: "Your email has been received. I will get back to you within the next 48 hours."
+//     })
+//   })
+//   .catch(err => console.log(err))
+// })
 
 //maybe make analytics page, add date/hour buckets, good start though
 app.get('/track/:id', (req, res) => {

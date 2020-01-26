@@ -30,8 +30,6 @@ var _cors = _interopRequireDefault(require("cors"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
-var _config = _interopRequireDefault(require("./config"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 3003;
@@ -137,35 +135,35 @@ app.get('/health', function (req, res) {
 app.get('/images/:id', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
-});
-app.post('/email', function (req, res) {
-  (0, _nodeFetch["default"])("https://mandrillapp.com/api/1.0/messages/send.json", {
-    "method": "POST",
-    "body": {
-      "data": {
-        "key": _config["default"].key2,
-        "message": {
-          "from_email": "npm1514@gmail.com",
-          "to": [{
-            "email": "npm1514@gmail.com",
-            "name": "Lars On The Rocks",
-            "type": "to"
-          }],
-          "autotext": true,
-          "subject": "Customer Inquiry - " + "name" + " @ " + "email",
-          "text": "message"
-        }
-      }
-    }
-  }).then(function (resp) {
-    console.log("success", resp);
-    res.send({
-      message: "Your email has been received. I will get back to you within the next 48 hours."
-    });
-  })["catch"](function (err) {
-    return console.log(err);
-  });
-}); //maybe make analytics page, add date/hour buckets, good start though
+}); // app.post('/email', (req, res) => {
+//   fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
+//     "method": "POST",
+//     "body": {
+//       "data": {
+//         "key": config.key2,
+//         "message": {
+//           "from_email": "npm1514@gmail.com",
+//           "to": [{
+//             "email": "npm1514@gmail.com",
+//             "name": "Lars On The Rocks",
+//             "type": "to"
+//           }],
+//           "autotext": true,
+//           "subject": "Customer Inquiry - " + "name" + " @ " + "email",
+//           "text": "message"
+//         }
+//       }
+//     }
+//   })
+//   .then((resp) => {
+//     console.log("success", resp);
+//     res.send({
+//       message: "Your email has been received. I will get back to you within the next 48 hours."
+//     })
+//   })
+//   .catch(err => console.log(err))
+// })
+//maybe make analytics page, add date/hour buckets, good start though
 
 app.get('/track/:id', function (req, res) {
   var sObj = trackedData[req.params.id];
