@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Banner, Mask, Title, Subtitle } from '../styled-components/banner';
+import { Banner, Mask, Title, Subtitle } from '../styled-components/components/banner';
 
 class BannerComponent extends Component {
   render(){

@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import { Header, Footer, Banner } from '../components';
-import { HomeWrapper, HomeContent } from '../styled-components/home';
+import { Header, Footer, Banner , Blog, Social, Photos } from '../components';
+import { HomeWrapper, HomeContent } from '../styled-components/pages/home';
+import { SplitView, SplitLeft, SplitRight } from '../styled-components/global';
+import photos from '../data/photoList';
 
-class Home extends Component {
+class HomePage extends Component {
+    getSixRandom = () => {
+      let photoList = photos;
+      var list = [];
+      for (var i = 0; i < 6; i++) {
+        var rando = Math.floor(Math.random()*photoList.length);
+        list.push(photoList[rando]);
+        photoList.splice(rando, 1);
+      }
+      return list;
+    }
     render(){
       return (
           <HomeWrapper>
               <Header page={this.props.data.page}/>
               <Banner/>
               <HomeContent>
-                home page
+                <SplitView>
+                  <SplitLeft width="70%">
+                    <Blog/>
+                  </SplitLeft>
+                  <SplitRight>
+                    <Social/>
+                  </SplitRight>
+                </SplitView>
+                <Photos images={this.getSixRandom()}/>
               </HomeContent>
               <Footer/>
           </HomeWrapper>
@@ -17,4 +37,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default HomePage;

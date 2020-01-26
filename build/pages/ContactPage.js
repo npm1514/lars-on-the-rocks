@@ -9,7 +9,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _contact = require("../styled-components/contact");
+var _contact = require("../styled-components/pages/contact");
+
+var _global = require("../styled-components/global");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -33,28 +35,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Contact =
+var ContactPage =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Contact, _Component);
+  _inherits(ContactPage, _Component);
 
-  function Contact() {
-    _classCallCheck(this, Contact);
+  function ContactPage() {
+    _classCallCheck(this, ContactPage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Contact).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(ContactPage).apply(this, arguments));
   }
 
-  _createClass(Contact, [{
+  _createClass(ContactPage, [{
     key: "render",
     value: function render() {
       return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_components.Header, {
         page: this.props.data.page
-      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_contact.ContactContent, null, "contact page"), _react["default"].createElement(_components.Footer, null));
+      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_contact.ContactContent, null, _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, null, _react["default"].createElement(_components.Message, null)), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement(_components.Social, null)))), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 
-  return Contact;
+  return ContactPage;
 }(_react.Component);
 
-var _default = Contact;
+var _default = ContactPage;
 exports["default"] = _default;

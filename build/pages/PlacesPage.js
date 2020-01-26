@@ -9,7 +9,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _places = require("../styled-components/places");
+var _places = require("../styled-components/pages/places");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -33,18 +33,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Places =
+var PlacesPage =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Places, _Component);
+  _inherits(PlacesPage, _Component);
 
-  function Places() {
-    _classCallCheck(this, Places);
+  function PlacesPage() {
+    _classCallCheck(this, PlacesPage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Places).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlacesPage).apply(this, arguments));
   }
 
-  _createClass(Places, [{
+  _createClass(PlacesPage, [{
     key: "render",
     value: function render() {
       return _react["default"].createElement(_places.PlacesWrapper, null, _react["default"].createElement(_components.Header, {
@@ -53,8 +53,8 @@ function (_Component) {
     }
   }]);
 
-  return Places;
+  return PlacesPage;
 }(_react.Component);
 
-var _default = Places;
+var _default = PlacesPage;
 exports["default"] = _default;

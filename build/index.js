@@ -14,7 +14,7 @@ var _PlacesRoot = _interopRequireDefault(require("./roots/PlacesRoot"));
 
 var _ContactRoot = _interopRequireDefault(require("./roots/ContactRoot"));
 
-var _AuthorRoot = _interopRequireDefault(require("./roots/AuthorRoot"));
+var _AboutRoot = _interopRequireDefault(require("./roots/AboutRoot"));
 
 var _PhotosRoot = _interopRequireDefault(require("./roots/PhotosRoot"));
 
@@ -42,7 +42,7 @@ var dataObj = {},
     homeBundle = "",
     placesBundle = "",
     contactBundle = "",
-    authorBundle = "",
+    aboutBundle = "",
     photosBundle = "",
     trackedData = {
   pv: {
@@ -76,9 +76,9 @@ _fs["default"].readFile('./dist/js/contact.bundle.min.js', "utf8", function (err
   contactBundle = data || "";
 });
 
-_fs["default"].readFile('./dist/js/author.bundle.min.js', "utf8", function (err, data) {
+_fs["default"].readFile('./dist/js/about.bundle.min.js', "utf8", function (err, data) {
   if (err) console.log("ERR", err);
-  authorBundle = data || "";
+  aboutBundle = data || "";
 });
 
 _fs["default"].readFile('./dist/js/photos.bundle.min.js', "utf8", function (err, data) {
@@ -114,12 +114,12 @@ app.get('/contact', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, contactBundle, _ContactRoot["default"]));
 });
-app.get('/author', function (req, res) {
+app.get('/about', function (req, res) {
   var data = {
-    page: "/author"
+    page: "/about"
   };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, authorBundle, _AuthorRoot["default"]));
+  res.send(returnHTML(data, aboutBundle, _AboutRoot["default"]));
 });
 app.get('/photos', function (req, res) {
   var data = {

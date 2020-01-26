@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Footer, Banner } from '../components';
-import { PlacesWrapper, PlacesContent } from '../styled-components/places';
+import { PlacesWrapper, PlacesContent } from '../styled-components/pages/places';
 
-class Places extends Component {
+class PlacesPage extends Component {
     render(){
       return (
           <PlacesWrapper>
@@ -17,4 +17,4 @@ class Places extends Component {
     }
 }
 
-export default Places;
+export default PlacesPage;

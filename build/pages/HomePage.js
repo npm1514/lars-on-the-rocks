@@ -9,7 +9,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("../components");
 
-var _home = require("../styled-components/home");
+var _home = require("../styled-components/pages/home");
+
+var _global = require("../styled-components/global");
+
+var _photoList = _interopRequireDefault(require("../data/photoList"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -25,36 +31,65 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Home =
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var HomePage =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Home, _Component);
+  _inherits(HomePage, _Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+  function HomePage() {
+    var _getPrototypeOf2;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
+    var _this;
+
+    _classCallCheck(this, HomePage);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HomePage)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "getSixRandom", function () {
+      var photoList = _photoList["default"];
+      var list = [];
+
+      for (var i = 0; i < 6; i++) {
+        var rando = Math.floor(Math.random() * photoList.length);
+        list.push(photoList[rando]);
+        photoList.splice(rando, 1);
+      }
+
+      return list;
+    });
+
+    return _this;
   }
 
-  _createClass(Home, [{
+  _createClass(HomePage, [{
     key: "render",
     value: function render() {
       return _react["default"].createElement(_home.HomeWrapper, null, _react["default"].createElement(_components.Header, {
         page: this.props.data.page
-      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_home.HomeContent, null, "home page"), _react["default"].createElement(_components.Footer, null));
+      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_home.HomeContent, null, _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, {
+        width: "70%"
+      }, _react["default"].createElement(_components.Blog, null)), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement(_components.Social, null))), _react["default"].createElement(_components.Photos, {
+        images: this.getSixRandom()
+      })), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 
-  return Home;
+  return HomePage;
 }(_react.Component);
 
-var _default = Home;
+var _default = HomePage;
 exports["default"] = _default;

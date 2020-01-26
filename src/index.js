@@ -6,7 +6,7 @@ import { renderToString } from "react-dom/server";
 import HomeRoot from "./roots/HomeRoot";
 import PlacesRoot from "./roots/PlacesRoot";
 import ContactRoot from "./roots/ContactRoot";
-import AuthorRoot from "./roots/AuthorRoot";
+import AboutRoot from "./roots/AboutRoot";
 import PhotosRoot from "./roots/PhotosRoot";
 
 import { ServerStyleSheet } from 'styled-components';
@@ -29,7 +29,7 @@ var dataObj = {},
 homeBundle = "",
 placesBundle = "",
 contactBundle = "",
-authorBundle = "",
+aboutBundle = "",
 photosBundle = "",
 trackedData = {
   pv: {
@@ -60,9 +60,9 @@ fs.readFile('./dist/js/contact.bundle.min.js', "utf8", (err, data) => {
   if (err) console.log("ERR" ,err);
   contactBundle = data || "";
 })
-fs.readFile('./dist/js/author.bundle.min.js', "utf8", (err, data) => {
+fs.readFile('./dist/js/about.bundle.min.js', "utf8", (err, data) => {
   if (err) console.log("ERR" ,err);
-  authorBundle = data || "";
+  aboutBundle = data || "";
 })
 fs.readFile('./dist/js/photos.bundle.min.js', "utf8", (err, data) => {
   if (err) console.log("ERR" ,err);
@@ -98,12 +98,12 @@ app.get('/contact', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, contactBundle, ContactRoot));
 });
-app.get('/author', (req, res) => {
+app.get('/about', (req, res) => {
   let data = {
-    page: "/author"
+    page: "/about"
   };
   res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, authorBundle, AuthorRoot));
+  res.send(returnHTML(data, aboutBundle, AboutRoot));
 });
 app.get('/photos', (req, res) => {
   let data = {

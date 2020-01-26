@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 require('@babel/polyfill');
-const pages = [ 'home', 'places', 'contact', 'author', 'photos' ];
+const pages = [ 'home', 'places', 'contact', 'about', 'photos' ];
 
 module.exports = pages.map((page) => {
   return {

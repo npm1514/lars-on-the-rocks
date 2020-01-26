@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import { Header, Footer, Banner } from '../components';
-import { ContactWrapper, ContactContent } from '../styled-components/contact';
+import { Header, Footer, Banner, Message, Social } from '../components';
+import { ContactWrapper, ContactContent } from '../styled-components/pages/contact';
+import { SplitView, SplitLeft, SplitRight } from '../styled-components/global';
 
-class Contact extends Component {
+class ContactPage extends Component {
     render(){
       return (
           <ContactWrapper>
               <Header page={this.props.data.page}/>
               <Banner/>
               <ContactContent>
-                contact page
+                <SplitView>
+                  <SplitLeft>
+                    <Message/>
+                  </SplitLeft>
+                  <SplitRight>
+                    <Social/>
+                  </SplitRight>
+                </SplitView>
               </ContactContent>
               <Footer/>
           </ContactWrapper>
@@ -17,4 +25,4 @@ class Contact extends Component {
     }
 }
 
-export default Contact;
+export default ContactPage;

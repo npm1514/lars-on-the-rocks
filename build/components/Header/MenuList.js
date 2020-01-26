@@ -14,8 +14,8 @@ var _default = [{
   label: "Photos",
   link: "/photos"
 }, {
-  label: "Life of Lars",
-  link: "/author"
+  label: "About Lars",
+  link: "/about"
 }, {
   label: "Contact",
   link: "/contact"
