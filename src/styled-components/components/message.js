@@ -28,6 +28,12 @@ export const Message = styled.div`
     flex-direction: column;
     margin: 0;
   }
+  label {
+    font-size: 20px;
+    background: gold;
+    margin-top: 16px;
+    padding: 12px;
+  }
   @media(min-width: 700px){
     width: calc(100% - 40px);
   }

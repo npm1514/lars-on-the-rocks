@@ -5,37 +5,40 @@ class MessageComponent extends Component {
   state = {
     name: "",
     email: "",
-    message: ""
+    message: "",
+    textUpdate: ""
   }
   submitMessage = (e) => {
     e.preventDefault();
     const { name, email, message } = this.state;
-    const data = {
-      name: name,
-      email: email,
-      message: message
-    };
-    console.log("send email", this.state);
     fetch('/email', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ name, email, message })
     })
     .then(res => res.json())
-    .then(res => console.log("success", res))
-    .catch(err => console.log("error", err))
-
+    .then(res => {
+      this.changeText("Message Delivery Successful. Lars will get back to you shortly.")
+    })
+    .catch(err => {
+      this.changeText("Message Delivery Unsuccessful. Try again or try to contact Lars another way. Sorry!!")
+    })
+  }
+  changeText = (val) => {
+    this.setState({textUpdate: val})
+    setTimeout(() => {
+      this.setState({textUpdate: ""})
+    }, 5000)
   }
   changeState = (prop, val) => {
     let obj = {};
     obj[prop] = val;
-    console.log(obj);
     this.setState(obj);
   }
   render(){
-    const { name, email, message } = this.state;
+    const { name, email, message, textUpdate } = this.state;
     return (
       <Message>
         <Title>Contact Me</Title>
@@ -66,6 +69,7 @@ class MessageComponent extends Component {
             required
           />
           <button type="submit">Submit</button>
+          {textUpdate && <label>{textUpdate}</label>}
         </form>
       </Message>
     );

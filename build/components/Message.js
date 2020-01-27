@@ -54,7 +54,8 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       name: "",
       email: "",
-      message: ""
+      message: "",
+      textUpdate: ""
     });
 
     _defineProperty(_assertThisInitialized(_this), "submitMessage", function (e) {
@@ -63,31 +64,40 @@ function (_Component) {
           name = _this$state.name,
           email = _this$state.email,
           message = _this$state.message;
-      var data = {
-        name: name,
-        email: email,
-        message: message
-      };
-      console.log("send email", _this.state);
       fetch('/email', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
       }).then(function (res) {
         return res.json();
       }).then(function (res) {
-        return console.log("success", res);
+        _this.changeText("Message Delivery Successful. Lars will get back to you shortly.");
       })["catch"](function (err) {
-        return console.log("error", err);
+        _this.changeText("Message Delivery Unsuccessful. Try again or try to contact Lars another way. Sorry!!");
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeText", function (val) {
+      _this.setState({
+        textUpdate: val
+      });
+
+      setTimeout(function () {
+        _this.setState({
+          textUpdate: ""
+        });
+      }, 5000);
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeState", function (prop, val) {
       var obj = {};
       obj[prop] = val;
-      console.log(obj);
 
       _this.setState(obj);
     });
@@ -103,7 +113,8 @@ function (_Component) {
       var _this$state2 = this.state,
           name = _this$state2.name,
           email = _this$state2.email,
-          message = _this$state2.message;
+          message = _this$state2.message,
+          textUpdate = _this$state2.textUpdate;
       return _react["default"].createElement(_message.Message, null, _react["default"].createElement(_message.Title, null, "Contact Me"), _react["default"].createElement(_message.Subtitle, null, "Lars Robertson", _react["default"].createElement("br", null), "1149 S 300 E", _react["default"].createElement("br", null), "Salt Lake City, UT", _react["default"].createElement("br", null)), _react["default"].createElement("form", {
         onSubmit: this.submitMessage
       }, _react["default"].createElement("input", {
@@ -131,7 +142,7 @@ function (_Component) {
         required: true
       }), _react["default"].createElement("button", {
         type: "submit"
-      }, "Submit")));
+      }, "Submit"), textUpdate && _react["default"].createElement("label", null, textUpdate)));
     }
   }]);
 
