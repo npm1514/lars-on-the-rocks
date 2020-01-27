@@ -3,6 +3,8 @@ export const Social = styled.div`
   position: relative;
   border: 1px solid #8d8d8d;
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
 `;
 
 export const Title = styled.div`

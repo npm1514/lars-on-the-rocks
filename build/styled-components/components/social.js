@@ -30,7 +30,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  border: 1px solid #8d8d8d;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  border: 1px solid #8d8d8d;\n  width: 100%;\n  max-width: 1200px;\n  margin: auto;\n"]);
 
   _templateObject = function _templateObject() {
     return data;

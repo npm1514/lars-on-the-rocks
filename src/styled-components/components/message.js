@@ -29,7 +29,7 @@ export const Message = styled.div`
     margin: 0;
   }
   @media(min-width: 700px){
-    width: calc(100% - 16px);
+    width: calc(100% - 40px);
   }
 `;
 export const Title = styled.div`

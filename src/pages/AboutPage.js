@@ -15,7 +15,7 @@ class AboutPage extends Component {
                   <SplitLeft>
                     <img src="/images/C23A3600-Edit.jpg"/>
                   </SplitLeft>
-                  <SplitRight>
+                  <SplitRight style={{height: 'inherit'}}>
                     <WordWrap>
                       <h3>Lars Robertson is a Ginger, Lover, Climber, Adventure Enthusiast, Ex Mormon, and is constantly seeking the next great adventure.</h3>
                       <h3>She takes it on the rocks! 🥃</h3>

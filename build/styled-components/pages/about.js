@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    width: calc(100% - 24px);\n    padding: 0 12px;\n    text-align: center;\n    h3 {\n      margin-top: 0;\n    }\n  "]);
+  var data = _taggedTemplateLiteral(["\n    width: calc(100% - 24px);\n    height: 100%;\n    padding: 0 12px;\n    text-align: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    h3 {\n      margin-top: 0;\n    }\n  "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -30,7 +30,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    min-height: 100vh;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    min-height: 100vh;\n    img {\n      margin-bottom: 24px;\n    }\n  "]);
 
   _templateObject = function _templateObject() {
     return data;
