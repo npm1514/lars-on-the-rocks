@@ -53,7 +53,7 @@ function (_Component) {
         page: this.props.data.page
       }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_about.AboutContent, null, _react["default"].createElement("h3", null, "About Lars"), _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, null, _react["default"].createElement("img", {
         src: "/images/C23A3600-Edit.jpg"
-      })), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement("div", null, _react["default"].createElement("h3", null, "Lars Robertson is a Ginger, Lover, Climber, Adventure Enthusiast, Ex Mormon, and is constantly seeking the next great adventure."), _react["default"].createElement("h3", null, "She takes it on the rocks! \uD83E\uDD43")))), _react["default"].createElement(_components.Social, null)), _react["default"].createElement(_components.Footer, null));
+      })), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement(_about.WordWrap, null, _react["default"].createElement("h3", null, "Lars Robertson is a Ginger, Lover, Climber, Adventure Enthusiast, Ex Mormon, and is constantly seeking the next great adventure."), _react["default"].createElement("h3", null, "She takes it on the rocks! \uD83E\uDD43")))), _react["default"].createElement(_components.Social, null)), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

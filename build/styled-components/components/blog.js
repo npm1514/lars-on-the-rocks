@@ -20,7 +20,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 13px;\n  color: #3f3f3f;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 13px;\n  color: #3f3f3f;\n  margin: 16px 0;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -40,7 +40,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  width: calc(100% - 24px);\n  padding: 12px;\n  margin: 12px 0;\n  img {\n    width: 100%;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: calc(100% - 40px);\n  padding: 12px;\n  padding-bottom: 24px;\n  border: 0.5px solid #8d8d8d;\n  margin: 0 12px 16px 0;\n  img {\n    width: 100%;\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -50,7 +50,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: calc(100% - 24px);\n  padding: 12px;\n  border: 1px solid #8d8d8d;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: calc(100%);\n"]);
 
   _templateObject = function _templateObject() {
     return data;

@@ -9,6 +9,18 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _social = require("../styled-components/components/social");
 
+var _Facebook = _interopRequireDefault(require("@material-ui/icons/Facebook"));
+
+var _Instagram = _interopRequireDefault(require("@material-ui/icons/Instagram"));
+
+var _Pinterest = _interopRequireDefault(require("@material-ui/icons/Pinterest"));
+
+var _Twitter = _interopRequireDefault(require("@material-ui/icons/Twitter"));
+
+var _LinkedIn = _interopRequireDefault(require("@material-ui/icons/LinkedIn"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -45,7 +57,22 @@ function (_Component) {
   _createClass(SocialComponent, [{
     key: "render",
     value: function render() {
-      return _react["default"].createElement(_social.Social, null, "social");
+      return _react["default"].createElement(_social.Social, null, _react["default"].createElement(_social.Title, null, "FOLLOW ME"), _react["default"].createElement(_social.IconsDiv, null, _react["default"].createElement("a", {
+        target: "_blank",
+        href: "https://www.instagram.com/lars.ontherocks/"
+      }, _react["default"].createElement(_Instagram["default"], null)), _react["default"].createElement("a", {
+        target: "_blank",
+        href: "https://www.facebook.com/larsontherocksrobertson"
+      }, _react["default"].createElement(_Facebook["default"], null)), _react["default"].createElement("a", {
+        target: "_blank",
+        href: "https://twitter.com/larsontherocks"
+      }, _react["default"].createElement(_Twitter["default"], null)), _react["default"].createElement("a", {
+        target: "_blank",
+        href: "https://www.pinterest.com/larsontherocks/"
+      }, _react["default"].createElement(_Pinterest["default"], null)), _react["default"].createElement("a", {
+        target: "_blank",
+        href: "https://www.linkedin.com/in/rlars/"
+      }, _react["default"].createElement(_LinkedIn["default"], null))));
     }
   }]);
 

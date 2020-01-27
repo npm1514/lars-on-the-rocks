@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Footer, Banner, Photos } from '../components';
-import { PhotosWrapper, PhotosContent } from '../styled-components/pages/photos';
+import { PhotosWrapper, PhotosContent, PlaceWrap } from '../styled-components/pages/photos';
 import photoList from '../data/photoList';
 
 class PhotosPage extends Component {
@@ -20,11 +20,11 @@ class PhotosPage extends Component {
       listOfLocations.sort((a,b) => (a.location > b.location) ? 1 : ((b.location > a.location) ? -1 : 0));
       return listOfLocations.map((a, i) => {
         return (
-          <div key={i}>
+          <PlaceWrap key={i}>
             <h2>{a.location}</h2>
             <hr/>
             <Photos images={a.photos}/>
-          </div>
+          </PlaceWrap>
         )
       });
     }

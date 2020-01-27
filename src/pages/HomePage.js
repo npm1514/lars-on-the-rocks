@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import { Header, Footer, Banner , Blog, Social, Photos } from '../components';
 import { HomeWrapper, HomeContent } from '../styled-components/pages/home';
 import { SplitView, SplitLeft, SplitRight } from '../styled-components/global';
-import photos from '../data/photoList';
+import photoList from '../data/photoList';
 
 class HomePage extends Component {
     getSixRandom = () => {
-      let photoList = photos;
       var list = [];
+      var photos = []
       for (var i = 0; i < 6; i++) {
         var rando = Math.floor(Math.random()*photoList.length);
-        list.push(photoList[rando]);
-        photoList.splice(rando, 1);
+        if(list.find(a => a === rando)){
+          i--;
+        } else {
+          list.push(rando)
+          photos.push(photoList[rando]);
+        }
       }
-      return list;
+      return photos;
     }
     render(){
       return (
@@ -22,10 +26,10 @@ class HomePage extends Component {
               <Banner/>
               <HomeContent>
                 <SplitView>
-                  <SplitLeft width="70%">
+                  <SplitLeft width="65%">
                     <Blog/>
                   </SplitLeft>
-                  <SplitRight>
+                  <SplitRight width="35%">
                     <Social/>
                   </SplitRight>
                 </SplitView>

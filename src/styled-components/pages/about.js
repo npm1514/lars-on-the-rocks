@@ -7,7 +7,16 @@ import styled from 'styled-components';
 
   export const AboutContent = styled.div`
     width: calc(100% - 32px);
-    padding: 16px;
+    padding: 24px 16px;
     min-height: calc(100vh - 300px - 60px);
     text-align: center;
+  `;
+
+  export const WordWrap = styled.div`
+    width: calc(100% - 24px);
+    padding: 0 12px;
+    text-align: center;
+    h3 {
+      margin-top: 0;
+    }
   `;

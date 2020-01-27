@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: ", ";50%;\n  height: max-content;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: max-content;\n  img {\n    width: 100%;\n  }\n  @media(min-width: 700px){\n    width: ", ";\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -20,7 +20,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  width: ", ";50%;\n  height: max-content;\n  img {\n    width: 100%;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: max-content;\n  margin-bottom: 16px;\n  img {\n    width: 100%;\n  }\n  @media(min-width: 700px){\n    width: ", ";\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -30,7 +30,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: calc(100% - 48px - 48px);\n  padding: 24px;\n  margin: 24px;\n  border: 0.5px solid #8d8d8d;\n  display: flex;\n  align-items: stretch;\n  flex-wrap: wrap;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  display: flex;\n  align-items: stretch;\n  flex-wrap: wrap;\n  margin-bottom: 36px;\n  max-width: 1200px;\n  margin: auto;\n"]);
 
   _templateObject = function _templateObject() {
     return data;

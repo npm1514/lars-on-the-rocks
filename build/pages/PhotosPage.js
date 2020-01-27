@@ -79,7 +79,7 @@ function (_Component) {
         return a.location > b.location ? 1 : b.location > a.location ? -1 : 0;
       });
       return listOfLocations.map(function (a, i) {
-        return _react["default"].createElement("div", {
+        return _react["default"].createElement(_photos.PlaceWrap, {
           key: i
         }, _react["default"].createElement("h2", null, a.location), _react["default"].createElement("hr", null), _react["default"].createElement(_components.Photos, {
           images: a.photos

@@ -22,9 +22,6 @@ module.exports = [{
   src: "/images/C23A3734-Edit.jpg",
   location: "Utah"
 }, {
-  src: "/images/C23A3734-Edit.jpg",
-  location: "Utah"
-}, {
   src: "/images/C23A3781-Edit.jpg",
   location: "Utah"
 }, {

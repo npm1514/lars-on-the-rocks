@@ -8,9 +8,6 @@ var _default = [{
   label: "Lars On The Rocks",
   link: "/"
 }, {
-  label: "Places",
-  link: "/places"
-}, {
   label: "Photos",
   link: "/photos"
 }, {

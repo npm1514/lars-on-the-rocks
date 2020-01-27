@@ -60,16 +60,23 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HomePage)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "getSixRandom", function () {
-      var photoList = _photoList["default"];
       var list = [];
+      var photos = [];
 
       for (var i = 0; i < 6; i++) {
-        var rando = Math.floor(Math.random() * photoList.length);
-        list.push(photoList[rando]);
-        photoList.splice(rando, 1);
+        var rando = Math.floor(Math.random() * _photoList["default"].length);
+
+        if (list.find(function (a) {
+          return a === rando;
+        })) {
+          i--;
+        } else {
+          list.push(rando);
+          photos.push(_photoList["default"][rando]);
+        }
       }
 
-      return list;
+      return photos;
     });
 
     return _this;
@@ -81,8 +88,10 @@ function (_Component) {
       return _react["default"].createElement(_home.HomeWrapper, null, _react["default"].createElement(_components.Header, {
         page: this.props.data.page
       }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_home.HomeContent, null, _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, {
-        width: "70%"
-      }, _react["default"].createElement(_components.Blog, null)), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement(_components.Social, null))), _react["default"].createElement(_components.Photos, {
+        width: "65%"
+      }, _react["default"].createElement(_components.Blog, null)), _react["default"].createElement(_global.SplitRight, {
+        width: "35%"
+      }, _react["default"].createElement(_components.Social, null))), _react["default"].createElement(_components.Photos, {
         images: this.getSixRandom()
       })), _react["default"].createElement(_components.Footer, null));
     }

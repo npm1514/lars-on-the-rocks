@@ -4,7 +4,6 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 
 import HomeRoot from "./roots/HomeRoot";
-import PlacesRoot from "./roots/PlacesRoot";
 import ContactRoot from "./roots/ContactRoot";
 import AboutRoot from "./roots/AboutRoot";
 import PhotosRoot from "./roots/PhotosRoot";
@@ -27,7 +26,6 @@ app.use(bodyParser.urlencoded())
 
 var dataObj = {},
 homeBundle = "",
-placesBundle = "",
 contactBundle = "",
 aboutBundle = "",
 photosBundle = "",
@@ -51,10 +49,6 @@ trackedData = {
 fs.readFile('./dist/js/home.bundle.min.js', "utf8", (err, data) => {
   if (err) console.log("ERR" ,err);
   homeBundle = data || "";
-})
-fs.readFile('./dist/js/places.bundle.min.js', "utf8", (err, data) => {
-  if (err) console.log("ERR" ,err);
-  placesBundle = data || "";
 })
 fs.readFile('./dist/js/contact.bundle.min.js', "utf8", (err, data) => {
   if (err) console.log("ERR" ,err);
@@ -83,13 +77,6 @@ app.get('/home', (req, res) => {
   };
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, homeBundle, HomeRoot));
-});
-app.get('/places', (req, res) => {
-  let data = {
-    page: "/places"
-  };
-  res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, placesBundle, PlacesRoot));
 });
 app.get('/contact', (req, res) => {
   let data = {

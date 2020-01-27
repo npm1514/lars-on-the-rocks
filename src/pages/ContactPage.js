@@ -11,10 +11,10 @@ class ContactPage extends Component {
               <Banner/>
               <ContactContent>
                 <SplitView>
-                  <SplitLeft>
+                  <SplitLeft width="65%">
                     <Message/>
                   </SplitLeft>
-                  <SplitRight>
+                  <SplitRight width="35%">
                     <Social/>
                   </SplitRight>
                 </SplitView>

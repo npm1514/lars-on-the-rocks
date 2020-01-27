@@ -10,8 +10,6 @@ var _server = require("react-dom/server");
 
 var _HomeRoot = _interopRequireDefault(require("./roots/HomeRoot"));
 
-var _PlacesRoot = _interopRequireDefault(require("./roots/PlacesRoot"));
-
 var _ContactRoot = _interopRequireDefault(require("./roots/ContactRoot"));
 
 var _AboutRoot = _interopRequireDefault(require("./roots/AboutRoot"));
@@ -40,7 +38,6 @@ app.use(_bodyParser["default"].json());
 app.use(_bodyParser["default"].urlencoded());
 var dataObj = {},
     homeBundle = "",
-    placesBundle = "",
     contactBundle = "",
     aboutBundle = "",
     photosBundle = "",
@@ -64,11 +61,6 @@ var dataObj = {},
 _fs["default"].readFile('./dist/js/home.bundle.min.js', "utf8", function (err, data) {
   if (err) console.log("ERR", err);
   homeBundle = data || "";
-});
-
-_fs["default"].readFile('./dist/js/places.bundle.min.js', "utf8", function (err, data) {
-  if (err) console.log("ERR", err);
-  placesBundle = data || "";
 });
 
 _fs["default"].readFile('./dist/js/contact.bundle.min.js', "utf8", function (err, data) {
@@ -99,13 +91,6 @@ app.get('/home', function (req, res) {
   };
   res.set('Cache-Control', 'public, max-age=31557600');
   res.send(returnHTML(data, homeBundle, _HomeRoot["default"]));
-});
-app.get('/places', function (req, res) {
-  var data = {
-    page: "/places"
-  };
-  res.set('Cache-Control', 'public, max-age=31557600');
-  res.send(returnHTML(data, placesBundle, _PlacesRoot["default"]));
 });
 app.get('/contact', function (req, res) {
   var data = {

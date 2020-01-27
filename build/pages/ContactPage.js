@@ -51,7 +51,11 @@ function (_Component) {
     value: function render() {
       return _react["default"].createElement(_contact.ContactWrapper, null, _react["default"].createElement(_components.Header, {
         page: this.props.data.page
-      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_contact.ContactContent, null, _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, null, _react["default"].createElement(_components.Message, null)), _react["default"].createElement(_global.SplitRight, null, _react["default"].createElement(_components.Social, null)))), _react["default"].createElement(_components.Footer, null));
+      }), _react["default"].createElement(_components.Banner, null), _react["default"].createElement(_contact.ContactContent, null, _react["default"].createElement(_global.SplitView, null, _react["default"].createElement(_global.SplitLeft, {
+        width: "65%"
+      }, _react["default"].createElement(_components.Message, null)), _react["default"].createElement(_global.SplitRight, {
+        width: "35%"
+      }, _react["default"].createElement(_components.Social, null)))), _react["default"].createElement(_components.Footer, null));
     }
   }]);
 

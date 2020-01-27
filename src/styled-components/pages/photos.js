@@ -7,7 +7,13 @@ import styled from 'styled-components';
 
   export const PhotosContent = styled.div`
     width: calc(100% - 32px);
-    padding: 16px;
+    padding: 24px 16px;
     min-height: calc(100vh - 300px - 60px);
     text-align: center;
+  `;
+
+  export const PlaceWrap = styled.div`
+    hr {
+      margin-bottom: 24px;
+    }
   `;
