@@ -28,8 +28,15 @@ var _cors = _interopRequireDefault(require("cors"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
+var _nodemailer = _interopRequireDefault(require("nodemailer"));
+
+var _config = _interopRequireDefault(require("./config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var Cryptr = require('cryptr');
+
+var cryptr = new Cryptr(_config["default"].key);
 var PORT = process.env.PORT || 3003;
 var app = (0, _express["default"])();
 app.use((0, _compression["default"])());
@@ -120,35 +127,33 @@ app.get('/health', function (req, res) {
 app.get('/images/:id', function (req, res) {
   res.set('Cache-Control', 'public, max-age=31557600');
   res.sendFile(_path["default"].join(__dirname, '../images/' + req.params.id));
-}); // app.post('/email', (req, res) => {
-//   fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
-//     "method": "POST",
-//     "body": {
-//       "data": {
-//         "key": config.key2,
-//         "message": {
-//           "from_email": "npm1514@gmail.com",
-//           "to": [{
-//             "email": "npm1514@gmail.com",
-//             "name": "Lars On The Rocks",
-//             "type": "to"
-//           }],
-//           "autotext": true,
-//           "subject": "Customer Inquiry - " + "name" + " @ " + "email",
-//           "text": "message"
-//         }
-//       }
-//     }
-//   })
-//   .then((resp) => {
-//     console.log("success", resp);
-//     res.send({
-//       message: "Your email has been received. I will get back to you within the next 48 hours."
-//     })
-//   })
-//   .catch(err => console.log(err))
-// })
-//maybe make analytics page, add date/hour buckets, good start though
+});
+app.post('/email', function (req, res) {
+  var transporter = _nodemailer["default"].createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+      user: cryptr.decrypt(_config["default"].email),
+      pass: cryptr.decrypt(_config["default"].gmPass)
+    }
+  });
+
+  transporter.sendMail({
+    from: req.body.email,
+    to: cryptr.decrypt(_config["default"].email),
+    // to: cryptr.decrypt(config.email2),
+    subject: 'Lars On The Rocks Inquiry',
+    html: "\n      <h3>Hi Lars!</h3>\n      <h3>The following person, ".concat(req.body.name, "(").concat(req.body.email, "), has a message for you and it can be read below.</h3>\n      <h3>Message:</h3>\n      <h3>").concat(req.body.message, "</h3>\n\n    ")
+  }, function (error, info) {
+    if (error) res.send({
+      error: error
+    });else res.send({
+      response: info
+    });
+  });
+}); //maybe make analytics page, add date/hour buckets, good start though
 
 app.get('/track/:id', function (req, res) {
   var sObj = trackedData[req.params.id];

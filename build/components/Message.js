@@ -63,7 +63,25 @@ function (_Component) {
           name = _this$state.name,
           email = _this$state.email,
           message = _this$state.message;
+      var data = {
+        name: name,
+        email: email,
+        message: message
+      };
       console.log("send email", _this.state);
+      fetch('/email', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        return console.log("success", res);
+      })["catch"](function (err) {
+        return console.log("error", err);
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeState", function (prop, val) {

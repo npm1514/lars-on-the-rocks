@@ -10,7 +10,23 @@ class MessageComponent extends Component {
   submitMessage = (e) => {
     e.preventDefault();
     const { name, email, message } = this.state;
+    const data = {
+      name: name,
+      email: email,
+      message: message
+    };
     console.log("send email", this.state);
+    fetch('/email', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => console.log("success", res))
+    .catch(err => console.log("error", err))
+
   }
   changeState = (prop, val) => {
     let obj = {};

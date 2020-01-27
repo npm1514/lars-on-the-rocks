@@ -15,6 +15,12 @@ import path from 'path'
 import compression from 'compression';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import nodemailer from 'nodemailer';
+
+import config from './config';
+
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr(config.key);
 
 var PORT = process.env.PORT || 3003;
 
@@ -107,34 +113,35 @@ app.get('/images/:id', (req, res) => {
   res.sendFile(path.join(__dirname, '../images/' + req.params.id));
 });
 
-// app.post('/email', (req, res) => {
-//   fetch("https://mandrillapp.com/api/1.0/messages/send.json", {
-//     "method": "POST",
-//     "body": {
-//       "data": {
-//         "key": config.key2,
-//         "message": {
-//           "from_email": "npm1514@gmail.com",
-//           "to": [{
-//             "email": "npm1514@gmail.com",
-//             "name": "Lars On The Rocks",
-//             "type": "to"
-//           }],
-//           "autotext": true,
-//           "subject": "Customer Inquiry - " + "name" + " @ " + "email",
-//           "text": "message"
-//         }
-//       }
-//     }
-//   })
-//   .then((resp) => {
-//     console.log("success", resp);
-//     res.send({
-//       message: "Your email has been received. I will get back to you within the next 48 hours."
-//     })
-//   })
-//   .catch(err => console.log(err))
-// })
+app.post('/email', (req, res) => {
+  var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+      user: cryptr.decrypt(config.email),
+      pass: cryptr.decrypt(config.gmPass)
+    }
+  });
+
+  transporter.sendMail({
+    from: req.body.email,
+    to: cryptr.decrypt(config.email),
+    // to: cryptr.decrypt(config.email2),
+    subject: 'Lars On The Rocks Inquiry',
+    html: `
+      <h3>Hi Lars!</h3>
+      <h3>The following person, ${req.body.name}(${req.body.email}), has a message for you and it can be read below.</h3>
+      <h3>Message:</h3>
+      <h3>${req.body.message}</h3>
+
+    `
+  }, (error, info) => {
+    if (error) res.send({error: error});
+    else res.send({response: info});
+  });
+})
 
 //maybe make analytics page, add date/hour buckets, good start though
 app.get('/track/:id', (req, res) => {
