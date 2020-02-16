@@ -44,8 +44,7 @@ class MessageComponent extends Component {
         <Title>Contact Me</Title>
         <Subtitle>
           Lars Robertson<br/>
-          1149 S 300 E<br/>
-          Salt Lake City, UT<br/>
+          larsontherocks@yahoo.com
         </Subtitle>
         <form onSubmit={this.submitMessage}>
           <input

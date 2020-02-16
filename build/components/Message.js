@@ -115,7 +115,7 @@ function (_Component) {
           email = _this$state2.email,
           message = _this$state2.message,
           textUpdate = _this$state2.textUpdate;
-      return _react["default"].createElement(_message.Message, null, _react["default"].createElement(_message.Title, null, "Contact Me"), _react["default"].createElement(_message.Subtitle, null, "Lars Robertson", _react["default"].createElement("br", null), "1149 S 300 E", _react["default"].createElement("br", null), "Salt Lake City, UT", _react["default"].createElement("br", null)), _react["default"].createElement("form", {
+      return _react["default"].createElement(_message.Message, null, _react["default"].createElement(_message.Title, null, "Contact Me"), _react["default"].createElement(_message.Subtitle, null, "Lars Robertson", _react["default"].createElement("br", null), "larsontherocks@yahoo.com"), _react["default"].createElement("form", {
         onSubmit: this.submitMessage
       }, _react["default"].createElement("input", {
         onChange: function onChange(e) {
